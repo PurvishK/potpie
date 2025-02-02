@@ -102,7 +102,7 @@ def get_reviews(category_id: int, db: Session = Depends(get_db)):
 
     reviews_response = []
     for review in reviews:
-        # If tone or sentiment is missing, use LLM to calculate
+        
         if not review.tone or not review.sentiment:
             tone, sentiment = get_tone_and_sentiment(review.text, review.stars, review.tone, review.sentiment)
             review.tone = tone
